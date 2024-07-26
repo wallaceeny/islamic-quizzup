@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Islamic QuizzUp - Login</title>
+    <title>Islamic QuizzUp - Dashboard</title>
     <link rel="stylesheet" href="styles.css">
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/9.1.2/firebase-app.js";
@@ -24,27 +24,13 @@
         const analytics = getAnalytics(app);
         const database = getDatabase(app);
     </script>
-    <script src="auth.js" type="module" defer></script>
+    <script src="dashboard.js" type="module" defer></script>
 </head>
 <body>
     <div class="container">
-        <h1>Islamic QuizzUp - Connexion</h1>
-        <form id="login-form">
-            <div class="form-group">
-                <label for="username">Pseudo</label>
-                <input type="text" id="username" name="username" required>
-            </div>
-            <div class="form-group">
-                <label for="password">Mot de passe</label>
-                <input type="password" id="password" name="password" required>
-            </div>
-            <div class="form-group">
-                <label for="confirm-password">Confirmer le mot de passe</label>
-                <input type="password" id="confirm-password" name="confirm-password" required>
-            </div>
-            <button type="submit">S'inscrire / Se connecter</button>
-        </form>
-        <p id="message"></p>
+        <h1>Tableau de bord des joueurs</h1>
+        <ul id="user-list"></ul>
+        <button onclick="logout()">Se déconnecter</button>
     </div>
 </body>
 </html>
