@@ -7,14 +7,14 @@
   <link rel="stylesheet" href="styles.css">
   <style>
     body {
-      background-color: #f0f0f0;
+      background-color: #ffffff;
       margin: 0;
       padding: 0;
       font-family: Arial, sans-serif;
     }
 
     header {
-      background-color: #4CAF50;
+      background-color: #27868a;
       color: white;
       text-align: center;
       padding: 10px 0;
@@ -91,6 +91,17 @@
     .pearl {
       background-color: #e7accf;
     }
+
+    .logout-btn {
+      margin-top: 20px;
+      padding: 10px 20px;
+      font-size: 16px;
+      color: white;
+      background-color: #f44336;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
   </style>
 </head>
 <body>
@@ -108,6 +119,7 @@
       <p>Dernière connexion: <span id="last-login"></span></p>
       <p>Dernier quiz: <span id="last-quiz"></span></p>
     </div>
+    <button class="logout-btn" id="logout-btn">Déconnexion</button>
     <div class="categories">
       <button class="bronze">Croyance</button>
       <button class="silver">Jurisprudence</button>
@@ -140,6 +152,11 @@
       } else if (level <= 139) {
         star.src = 'pearl-star.png'; // Replace with the actual path to your pearl star image
       }
+
+      document.getElementById('logout-btn').addEventListener('click', function() {
+        localStorage.removeItem('loggedIn');
+        window.location.href = 'login.html';
+      });
     });
   </script>
 </body>
