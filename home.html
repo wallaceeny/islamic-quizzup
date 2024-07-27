@@ -18,33 +18,123 @@
 
     .container {
       width: 100%;
-      max-width: 600px;
+      max-width: 800px;
       padding: 20px;
       background-color: #fff;
       border-radius: 10px;
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     }
 
-    h1 {
-      text-align: center;
-      color: #333;
+    .user-info {
+      text-align: left;
+      margin-bottom: 20px;
     }
 
-    p {
-      text-align: center;
-      color: #555;
+    .user-info h1 {
+      margin: 0;
+      font-size: 24px;
+    }
+
+    .user-info p {
+      margin: 5px 0;
+      font-size: 16px;
+    }
+
+    .level {
+      display: flex;
+      align-items: center;
+    }
+
+    .level .star {
+      width: 20px;
+      height: 20px;
+      margin-left: 10px;
+    }
+
+    .categories {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .categories button {
+      flex: 1 1 calc(50% - 10px);
+      padding: 20px;
+      font-size: 18px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .bronze {
+      background-color: #cd7f32;
+    }
+
+    .silver {
+      background-color: #c0c0c0;
+    }
+
+    .gold {
+      background-color: #ffd700;
+    }
+
+    .cobalt {
+      background-color: #0047ab;
+    }
+
+    .diamond {
+      background-color: #b9f2ff;
+    }
+
+    .pearl {
+      background-color: #e7accf;
     }
   </style>
 </head>
 <body>
   <div class="container">
-    <h1>Bienvenue, <span id="username"></span>!</h1>
-    <p>Ceci est la page d'accueil.</p>
+    <div class="user-info">
+      <h1>Bienvenue, <span id="username"></span>!</h1>
+      <p>Points: <span id="points"></span></p>
+      <p class="level">
+        Niveau: <span id="level"></span>
+        <img id="star" class="star" src="" alt="star">
+      </p>
+      <p>Dernière connexion: <span id="last-login"></span></p>
+      <p>Dernier quiz: <span id="last-quiz"></span></p>
+    </div>
+    <div class="categories">
+      <button class="bronze">Croyance</button>
+      <button class="silver">Jurisprudence</button>
+      <button class="gold">Tafsir</button>
+      <button class="cobalt">Hadiths</button>
+      <button class="diamond">Histoire des Prophètes</button>
+    </div>
   </div>
   <script>
     document.addEventListener('DOMContentLoaded', function() {
       const username = localStorage.getItem('loggedIn');
+      const points = localStorage.getItem('points') || 0;
+      const level = localStorage.getItem('level') || 0;
+
       document.getElementById('username').innerText = username ? username : 'Invité';
+      document.getElementById('points').innerText = points;
+      document.getElementById('level').innerText = level;
+
+      const star = document.getElementById('star');
+      if (level <= 10) {
+        star.src = 'bronze-star.png'; // Replace with the actual path to your bronze star image
+      } else if (level <= 30) {
+        star.src = 'silver-star.png'; // Replace with the actual path to your silver star image
+      } else if (level <= 60) {
+        star.src = 'gold-star.png'; // Replace with the actual path to your gold star image
+      } else if (level <= 88) {
+        star.src = 'cobalt-star.png'; // Replace with the actual path to your cobalt star image
+      } else if (level <= 117) {
+        star.src = 'diamond-star.png'; // Replace with the actual path to your diamond star image
+      } else if (level <= 139) {
+        star.src = 'pearl-star.png'; // Replace with the actual path to your pearl star image
+      }
     });
   </script>
 </body>
