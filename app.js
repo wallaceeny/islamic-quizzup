@@ -1,40 +1,26 @@
-document.getElementById('show-register').addEventListener('click', () => {
+document.getElementById('show-register').addEventListener('click', function() {
     document.getElementById('login-form-container').style.display = 'none';
     document.getElementById('register-form-container').style.display = 'block';
   });
   
-  document.getElementById('show-login').addEventListener('click', () => {
-    document.getElementById('register-form-container').style.display = 'none';
+  document.getElementById('show-login').addEventListener('click', function() {
     document.getElementById('login-form-container').style.display = 'block';
+    document.getElementById('register-form-container').style.display = 'none';
   });
   
-  document.getElementById('register-form').addEventListener('submit', (e) => {
-    e.preventDefault();
-    const username = document.getElementById('register-username').value;
-    const password = document.getElementById('register-password').value;
-  
-    if (username && password) {
-      localStorage.setItem(username, password);
-      alert('Inscription réussie! Veuillez vous connecter.');
-      document.getElementById('register-form').reset();
-      document.getElementById('register-form-container').style.display = 'none';
-      document.getElementById('login-form-container').style.display = 'block';
-    } else {
-      alert('Veuillez remplir tous les champs.');
-    }
-  });
-  
-  document.getElementById('login-form').addEventListener('submit', (e) => {
-    e.preventDefault();
+  document.getElementById('login-form').addEventListener('submit', function(event) {
+    event.preventDefault();
     const username = document.getElementById('login-username').value;
-    const password = document.getElementById('login-password').value;
+    // Simulating successful login by storing the username
+    localStorage.setItem('loggedIn', username);
+    window.location.href = 'home.html';
+  });
   
-    const storedPassword = localStorage.getItem(username);
-    if (storedPassword && storedPassword === password) {
-      localStorage.setItem('loggedIn', username);
-      window.location.href = 'home.html';
-    } else {
-      alert('Nom d\'utilisateur ou mot de passe incorrect.');
-    }
+  document.getElementById('register-form').addEventListener('submit', function(event) {
+    event.preventDefault();
+    const username = document.getElementById('register-username').value;
+    // Simulating successful registration by storing the username
+    localStorage.setItem('loggedIn', username);
+    window.location.href = 'home.html';
   });
   

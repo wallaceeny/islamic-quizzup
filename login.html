@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self';">
   <title>Islamic QuizzUp - Connexion</title>
   <link rel="stylesheet" href="styles.css">
 </head>
@@ -18,11 +19,9 @@
           <input type="password" id="login-password" required>
           <button type="submit">Se connecter</button>
         </form>
-        <p>Pas encore de compte ? <a href="index.html" id="show-register">Inscrivez-vous ici</a></p>
+        <p>Pas encore de compte ? <a href="#" id="show-register">Inscrivez-vous ici</a></p>
       </div>
-<br>
-Information : Votre navigateur risque de vous envoyer un message à propos de votre mot de passe, assurez vous de garder votre mot de passe, il ne devrait pas y avoir de problème car ce dernier est stocké sur un stockage local.
-<br> Nous travaillons actuellement sur la sécurisation correcte de vos mots de passe.
+
       <div id="register-form-container" style="display:none;">
         <h2>Inscription</h2>
         <form id="register-form">
