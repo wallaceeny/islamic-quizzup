@@ -3,39 +3,19 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self';">
   <title>Islamic QuizzUp - Accueil</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <header>
-    <h1>Bienvenue sur Islamic QuizzUp!</h1>
-    <button id="logout-button">Se déconnecter</button>
-  </header>
-  <main>
-    <div class="sidebar">
-      <div class="player-info">
-        <h2 id="player-username">Nom d'utilisateur</h2>
-        <div class="points-level">
-          <div id="player-points" class="points">Points: 0</div>
-          <div id="player-level" class="level">
-            <span class="level-star bronze">0</span>
-          </div>
-        </div>
-      </div>
-      <div class="last-activity">
-        <p>Dernière connexion: <span id="last-login">N/A</span></p>
-        <p>Dernier quizz: <span id="last-quiz">N/A</span></p>
-      </div>
-    </div>
-    <div class="quiz-buttons">
-      <button class="quiz-btn" id="croyance">Croyance</button>
-      <button class="quiz-btn" id="jurisprudence">Jurisprudence</button>
-      <button class="quiz-btn" id="tafsir">Tafsir</button>
-      <button class="quiz-btn" id="hadiths">Hadiths</button>
-      <button class="quiz-btn" id="histoire">Histoire des Prophètes</button>
-    </div>
-  </main>
-  <script src="home.js"></script>
+  <div class="container">
+    <h1>Bienvenue, <span id="username"></span>!</h1>
+    <p>Ceci est la page d'accueil.</p>
+  </div>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const username = localStorage.getItem('loggedIn');
+      document.getElementById('username').innerText = username ? username : 'Invité';
+    });
+  </script>
 </body>
 </html>
