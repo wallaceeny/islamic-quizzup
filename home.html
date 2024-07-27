@@ -14,7 +14,7 @@
     }
 
     header {
-      background-color: #2d6966;
+      background-color: #4CAF50;
       color: white;
       text-align: center;
       padding: 10px 0;
@@ -24,12 +24,16 @@
     }
 
     .container {
+      display: flex;
+      flex-direction: row;
       margin-top: 60px;
       padding: 20px;
     }
 
     .user-info {
-      margin-bottom: 20px;
+      flex: 1;
+      max-width: 300px;
+      margin-right: 20px;
     }
 
     .user-info h1 {
@@ -53,10 +57,19 @@
       margin-left: 10px;
     }
 
+    .main-content {
+      flex: 3;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
     .categories {
       display: flex;
       flex-wrap: wrap;
       gap: 10px;
+      justify-content: center;
+      margin-top: 20px;
     }
 
     .categories button {
@@ -66,14 +79,16 @@
       border: none;
       border-radius: 5px;
       cursor: pointer;
+      min-width: 200px;
+      max-width: 300px;
     }
 
     .bronze {
-      background-color: #e21818;
+      background-color: #cd7f32;
     }
 
     .silver {
-      background-color: #00c3ff;
+      background-color: #c0c0c0;
     }
 
     .gold {
@@ -81,11 +96,11 @@
     }
 
     .cobalt {
-      background-color: #00ff6a;
+      background-color: #0047ab;
     }
 
     .diamond {
-      background-color: #ffae00;
+      background-color: #b9f2ff;
     }
 
     .pearl {
@@ -118,14 +133,16 @@
       </p>
       <p>Dernière connexion: <span id="last-login"></span></p>
       <p>Dernier quiz: <span id="last-quiz"></span></p>
-    </div>
-    <div class="categories">
-      <button class="bronze">Croyance</button>
-      <button class="silver">Jurisprudence</button>
-      <button class="gold">Tafsir</button>
-      <button class="cobalt">Hadiths</button>
-      <button class="diamond">Histoire des Prophètes</button>
       <button class="logout-btn" id="logout-btn">Déconnexion</button>
+    </div>
+    <div class="main-content">
+      <div class="categories">
+        <button class="bronze">Croyance</button>
+        <button class="silver">Jurisprudence</button>
+        <button class="gold">Tafsir</button>
+        <button class="cobalt">Hadiths</button>
+        <button class="diamond">Histoire des Prophètes</button>
+      </div>
     </div>
   </div>
   <script>
@@ -140,7 +157,7 @@
 
       const star = document.getElementById('star');
       if (level <= 10) {
-        star.src = 'png-clipart-open-bronze-star-medal-gold-gold-angle-medal.png'; // Chemin vers l'image de l'étoile de bronze
+        star.src = 'images/bronze-star.png'; // Chemin vers l'image de l'étoile de bronze
       } else if (level <= 30) {
         star.src = 'images/silver-star.png'; // Chemin vers l'image de l'étoile d'argent
       } else if (level <= 60) {
