@@ -12,20 +12,29 @@
     <button id="logout-button">Se déconnecter</button>
   </header>
   <main>
-    <h2>Dashboard</h2>
-    <p>Vous êtes connecté.</p>
+    <div class="sidebar">
+      <div class="player-info">
+        <h2 id="player-username">Nom d'utilisateur</h2>
+        <div class="points-level">
+          <div id="player-points" class="points">Points: 0</div>
+          <div id="player-level" class="level">
+            <span class="level-star bronze">0</span>
+          </div>
+        </div>
+      </div>
+      <div class="last-activity">
+        <p>Dernière connexion: <span id="last-login">N/A</span></p>
+        <p>Dernier quizz: <span id="last-quiz">N/A</span></p>
+      </div>
+    </div>
+    <div class="quiz-buttons">
+      <button class="quiz-btn" id="croyance">Croyance</button>
+      <button class="quiz-btn" id="jurisprudence">Jurisprudence</button>
+      <button class="quiz-btn" id="tafsir">Tafsir</button>
+      <button class="quiz-btn" id="hadiths">Hadiths</button>
+      <button class="quiz-btn" id="histoire">Histoire des Prophètes</button>
+    </div>
   </main>
-  <script>
-    // Vérifiez si l'utilisateur est connecté
-    if (!localStorage.getItem('loggedIn')) {
-      window.location.href = 'index.html';
-    }
-
-    // Gestion de la déconnexion
-    document.getElementById('logout-button').addEventListener('click', () => {
-      localStorage.removeItem('loggedIn');
-      window.location.href = 'index.html';
-    });
-  </script>
+  <script src="home.js"></script>
 </body>
 </html>
