@@ -10,23 +10,25 @@
       background-color: #f0f0f0;
       margin: 0;
       padding: 0;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
+      font-family: Arial, sans-serif;
+    }
+
+    header {
+      background-color: #4CAF50;
+      color: white;
+      text-align: center;
+      padding: 10px 0;
+      position: fixed;
+      width: 100%;
+      top: 0;
     }
 
     .container {
-      width: 100%;
-      max-width: 800px;
+      margin-top: 60px;
       padding: 20px;
-      background-color: #fff;
-      border-radius: 10px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     }
 
     .user-info {
-      text-align: left;
       margin-bottom: 20px;
     }
 
@@ -92,6 +94,9 @@
   </style>
 </head>
 <body>
+  <header>
+    <h1>Bienvenue sur Islamic QuizzUp!</h1>
+  </header>
   <div class="container">
     <div class="user-info">
       <h1>Bienvenue, <span id="username"></span>!</h1>
