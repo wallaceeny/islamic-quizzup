@@ -32,13 +32,6 @@ body {
   }
 
   
-  main {
-    width: 100%;
-    max-width: 1200px;
-    display: flex;
-    margin-top: 20px;
-  }
-  
   .sidebar {
     width: 25%;
     padding: 20px;
