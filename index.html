@@ -3,30 +3,37 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Islamic QuizzUp - Accueil</title>
+  <title>Islamic QuizzUp - Connexion</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <header>
-    <h1>Bienvenue sur Islamic QuizzUp!</h1>
-    <button id="logout-button">Se déconnecter</button>
-  </header>
-  <main>
-    <h2>Dashboard</h2>
-    <p>Vous êtes connecté.</p>
-  </main>
-  <script src="app.js"></script>
-  <script>
-    // Vérifiez si l'utilisateur est connecté
-    if (!localStorage.getItem('loggedIn')) {
-      window.location.href = 'login.html';
-    }
+  <div class="container">
+    <div class="form-container">
+      <div id="login-form-container">
+        <h2>Connexion</h2>
+        <form id="login-form">
+          <label for="login-username">Nom d'utilisateur</label>
+          <input type="text" id="login-username" required>
+          <label for="login-password">Mot de passe</label>
+          <input type="password" id="login-password" required>
+          <button type="submit">Se connecter</button>
+        </form>
+        <p>Pas encore de compte ? <a href="#" id="show-register">Inscrivez-vous ici</a></p>
+      </div>
 
-    // Gestion de la déconnexion
-    document.getElementById('logout-button').addEventListener('click', () => {
-      localStorage.removeItem('loggedIn');
-      window.location.href = 'login.html';
-    });
-  </script>
+      <div id="register-form-container" style="display:none;">
+        <h2>Inscription</h2>
+        <form id="register-form">
+          <label for="register-username">Nom d'utilisateur</label>
+          <input type="text" id="register-username" required>
+          <label for="register-password">Mot de passe</label>
+          <input type="password" id="register-password" required>
+          <button type="submit">S'inscrire</button>
+        </form>
+        <p>Déjà un compte ? <a href="#" id="show-login">Connectez-vous ici</a></p>
+      </div>
+    </div>
+  </div>
+  <script src="app.js"></script>
 </body>
 </html>

@@ -7,26 +7,33 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <main>
-    <h2>Connexion</h2>
-    <form id="login-form">
-      <label for="login-username">Nom d'utilisateur</label>
-      <input type="text" id="login-username" required>
-      <label for="login-password">Mot de passe</label>
-      <input type="password" id="login-password" required>
-      <button type="submit">Se connecter</button>
-    </form>
-    <p>Pas encore de compte ? <a href="#" id="show-register">Inscrivez-vous ici</a></p>
+  <div class="container">
+    <div class="form-container">
+      <div id="login-form-container">
+        <h2>Connexion</h2>
+        <form id="login-form">
+          <label for="login-username">Nom d'utilisateur</label>
+          <input type="text" id="login-username" required>
+          <label for="login-password">Mot de passe</label>
+          <input type="password" id="login-password" required>
+          <button type="submit">Se connecter</button>
+        </form>
+        <p>Pas encore de compte ? <a href="#" id="show-register">Inscrivez-vous ici</a></p>
+      </div>
 
-    <h2>Inscription</h2>
-    <form id="register-form" style="display:none;">
-      <label for="register-username">Nom d'utilisateur</label>
-      <input type="text" id="register-username" required>
-      <label for="register-password">Mot de passe</label>
-      <input type="password" id="register-password" required>
-      <button type="submit">S'inscrire</button>
-    </form>
-  </main>
+      <div id="register-form-container" style="display:none;">
+        <h2>Inscription</h2>
+        <form id="register-form">
+          <label for="register-username">Nom d'utilisateur</label>
+          <input type="text" id="register-username" required>
+          <label for="register-password">Mot de passe</label>
+          <input type="password" id="register-password" required>
+          <button type="submit">S'inscrire</button>
+        </form>
+        <p>Déjà un compte ? <a href="#" id="show-login">Connectez-vous ici</a></p>
+      </div>
+    </div>
+  </div>
   <script src="app.js"></script>
 </body>
 </html>

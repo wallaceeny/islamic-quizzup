@@ -1,6 +1,11 @@
 document.getElementById('show-register').addEventListener('click', () => {
-    document.getElementById('login-form').style.display = 'none';
-    document.getElementById('register-form').style.display = 'block';
+    document.getElementById('login-form-container').style.display = 'none';
+    document.getElementById('register-form-container').style.display = 'block';
+  });
+  
+  document.getElementById('show-login').addEventListener('click', () => {
+    document.getElementById('register-form-container').style.display = 'none';
+    document.getElementById('login-form-container').style.display = 'block';
   });
   
   document.getElementById('register-form').addEventListener('submit', (e) => {
@@ -12,8 +17,8 @@ document.getElementById('show-register').addEventListener('click', () => {
       localStorage.setItem(username, password);
       alert('Inscription réussie! Veuillez vous connecter.');
       document.getElementById('register-form').reset();
-      document.getElementById('register-form').style.display = 'none';
-      document.getElementById('login-form').style.display = 'block';
+      document.getElementById('register-form-container').style.display = 'none';
+      document.getElementById('login-form-container').style.display = 'block';
     } else {
       alert('Veuillez remplir tous les champs.');
     }
@@ -27,7 +32,7 @@ document.getElementById('show-register').addEventListener('click', () => {
     const storedPassword = localStorage.getItem(username);
     if (storedPassword && storedPassword === password) {
       localStorage.setItem('loggedIn', username);
-      window.location.href = 'index.html';
+      window.location.href = 'home.html';
     } else {
       alert('Nom d\'utilisateur ou mot de passe incorrect.');
     }
