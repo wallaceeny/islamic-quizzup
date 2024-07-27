@@ -3,48 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Islamic QuizzUp - Login</title>
-    <link rel="stylesheet" href="styles.css">
-    <script type="module">
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.1.2/firebase-app.js";
-        import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.1.2/firebase-analytics.js";
-        import { getDatabase } from "https://www.gstatic.com/firebasejs/9.1.2/firebase-database.js";
-
-        const firebaseConfig = {
-            apiKey: "AIzaSyAMnAiDxyaZCRSipOc4U8P2Wubo03WbOTo",
-            authDomain: "islamicquizzup.firebaseapp.com",
-            projectId: "islamicquizzup",
-            storageBucket: "islamicquizzup.appspot.com",
-            messagingSenderId: "585056667684",
-            appId: "1:585056667684:web:4d2faab75cf83e4d3270b1",
-            measurementId: "G-BDNJYL687P"
-        };
-
-        const app = initializeApp(firebaseConfig);
-        const analytics = getAnalytics(app);
-        const database = getDatabase(app);
-    </script>
-    <script src="auth.js" type="module" defer></script>
+    <title>Islamic QuizzUp</title>
 </head>
 <body>
-    <div class="container">
-        <h1>Islamic QuizzUp - Connexion</h1>
+    <div id="login">
         <form id="login-form">
-            <div class="form-group">
-                <label for="username">Pseudo</label>
-                <input type="text" id="username" name="username" required>
-            </div>
-            <div class="form-group">
-                <label for="password">Mot de passe</label>
-                <input type="password" id="password" name="password" required>
-            </div>
-            <div class="form-group">
-                <label for="confirm-password">Confirmer le mot de passe</label>
-                <input type="password" id="confirm-password" name="confirm-password" required>
-            </div>
-            <button type="submit">S'inscrire / Se connecter</button>
+            <label for="username">Pseudo :</label>
+            <input type="text" id="username" required>
+            <label for="password">Mot de passe :</label>
+            <input type="password" id="password" required>
+            <label for="confirm-password">Confirmer le mot de passe :</label>
+            <input type="password" id="confirm-password" required>
+            <button type="submit">Se connecter / S'inscrire</button>
+            <p id="message"></p>
         </form>
-        <p id="message"></p>
     </div>
+
+    <script type="module" src="firebase.js"></script>
+    <script type="module" src="auth.js"></script>
 </body>
 </html>

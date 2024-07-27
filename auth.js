@@ -42,13 +42,14 @@ loginForm.addEventListener('submit', async (e) => {
         return;
     }
 
-    const dbRef = ref(getDatabase());
-    get(child(dbRef, `users/${username}`)).then((snapshot) => {
-        if (snapshot.exists()) {
+    try {
+        const dbRef = ref(getDatabase());
+        const userSnapshot = await get(child(dbRef, `users/${username}`));
+        
+        if (userSnapshot.exists()) {
             // User exists, log in
             signInWithEmailAndPassword(auth, username, password)
                 .then((userCredential) => {
-                    // User logged in
                     const user = userCredential.user;
                     update(ref(database, 'users/' + user.uid), {
                         status: 'online'
@@ -59,13 +60,13 @@ loginForm.addEventListener('submit', async (e) => {
                     }, 2000);
                 })
                 .catch((error) => {
+                    console.error('Error during sign-in:', error);
                     message.textContent = 'Mot de passe incorrect.';
                 });
         } else {
             // User does not exist, create account
             createUserWithEmailAndPassword(auth, username, password)
                 .then((userCredential) => {
-                    // User account created
                     const user = userCredential.user;
                     set(ref(database, 'users/' + user.uid), {
                         username: username,
@@ -77,12 +78,14 @@ loginForm.addEventListener('submit', async (e) => {
                     }, 2000);
                 })
                 .catch((error) => {
+                    console.error('Error during sign-up:', error);
                     message.textContent = error.message;
                 });
         }
-    }).catch((error) => {
+    } catch (error) {
+        console.error('Database connection error:', error);
         message.textContent = 'Erreur de connexion à la base de données.';
-    });
+    }
 });
 
 // Événement au chargement de la page
