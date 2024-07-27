@@ -1,26 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css">
-    <title>Islamic QuizzUp</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Islamic QuizzUp - Accueil</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div id="login">
-        <form id="login-form">
-            <label for="username">Pseudo :</label>
-            <input type="text" id="username" required>
-            <label for="password">Mot de passe :</label>
-            <input type="password" id="password" required>
-            <label for="confirm-password">Confirmer le mot de passe :</label>
-            <input type="password" id="confirm-password" required>
-            <button type="submit">Se connecter / S'inscrire</button>
-            <p id="message"></p>
-        </form>
-    </div>
+  <header>
+    <h1>Bienvenue sur Islamic QuizzUp!</h1>
+    <button id="logout-button">Se déconnecter</button>
+  </header>
+  <main>
+    <h2>Dashboard</h2>
+    <p>Vous êtes connecté.</p>
+  </main>
+  <script src="app.js"></script>
+  <script>
+    // Vérifiez si l'utilisateur est connecté
+    if (!localStorage.getItem('loggedIn')) {
+      window.location.href = 'login.html';
+    }
 
-    <script type="module" src="firebase.js"></script>
-    <script type="module" src="auth.js"></script>
+    // Gestion de la déconnexion
+    document.getElementById('logout-button').addEventListener('click', () => {
+      localStorage.removeItem('loggedIn');
+      window.location.href = 'login.html';
+    });
+  </script>
 </body>
 </html>
