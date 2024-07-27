@@ -7,14 +7,14 @@
   <link rel="stylesheet" href="styles.css">
   <style>
     body {
-      background-color: #ffffff;
+      background-color: #f0f0f0;
       margin: 0;
       padding: 0;
       font-family: Arial, sans-serif;
     }
 
     header {
-      background-color: #27868a;
+      background-color: #4CAF50;
       color: white;
       text-align: center;
       padding: 10px 0;
@@ -140,17 +140,17 @@
 
       const star = document.getElementById('star');
       if (level <= 10) {
-        star.src = 'bronze-star.png'; // Replace with the actual path to your bronze star image
+        star.src = 'images/bronze-star.png'; // Chemin vers l'image de l'étoile de bronze
       } else if (level <= 30) {
-        star.src = 'silver-star.png'; // Replace with the actual path to your silver star image
+        star.src = 'images/silver-star.png'; // Chemin vers l'image de l'étoile d'argent
       } else if (level <= 60) {
-        star.src = 'gold-star.png'; // Replace with the actual path to your gold star image
+        star.src = 'images/gold-star.png'; // Chemin vers l'image de l'étoile d'or
       } else if (level <= 88) {
-        star.src = 'cobalt-star.png'; // Replace with the actual path to your cobalt star image
+        star.src = 'images/cobalt-star.png'; // Chemin vers l'image de l'étoile de cobalt
       } else if (level <= 117) {
-        star.src = 'diamond-star.png'; // Replace with the actual path to your diamond star image
+        star.src = 'images/diamond-star.png'; // Chemin vers l'image de l'étoile de diamant
       } else if (level <= 139) {
-        star.src = 'pearl-star.png'; // Replace with the actual path to your pearl star image
+        star.src = 'images/pearl-star.png'; // Chemin vers l'image de l'étoile de perle rose
       }
 
       document.getElementById('logout-btn').addEventListener('click', function() {
