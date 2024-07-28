@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Quiz Croyance</title>
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="style.css">
   <style>
     body {
       background-color: #f0f0f0;
@@ -121,8 +121,6 @@
   </div>
   <script>
     const questions = [
-      // Add your questions here
-      // Example:
       { question: "Question 1", options: ["Option 1", "Option 2", "Option 3", "Option 4"], correct: 0, type: "multiple" },
       { question: "Question 2", options: ["Vrai", "Faux"], correct: 1, type: "boolean" },
       // ...
@@ -144,12 +142,16 @@
       checkBothReady();
     });
 
-    document.getElementById('player2-status').addEventListener('click', function() {
+    // This function will simulate another player getting ready
+    function simulatePlayer2Ready() {
       player2Ready = !player2Ready;
-      this.classList.toggle('ready');
-      this.textContent = player2Ready ? 'Prêt!' : 'Non prêt';
+      document.getElementById('player2-status').classList.toggle('ready');
+      document.getElementById('player2-status').textContent = player2Ready ? 'Prêt!' : 'Non prêt';
       checkBothReady();
-    });
+    }
+
+    // Call simulatePlayer2Ready after some time to simulate another player
+    setTimeout(simulatePlayer2Ready, 2000); // Simulate player 2 getting ready after 2 seconds
 
     function checkBothReady() {
       if (player1Ready && player2Ready) {
