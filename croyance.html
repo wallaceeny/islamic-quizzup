@@ -3,51 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Croyance Quiz</title>
+    <title>Croyance Quiz - Islamic QuizzUp</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container">
+    <div class="quiz-container">
         <h1>Croyance Quiz</h1>
-        <div id="players">
-            <div class="player">
-                <span id="player1">En attente...</span>
-                <button id="ready1" onclick="setReady(1)">Prêt</button>
-            </div>
-            <div class="player">
-                <span id="player2">En attente...</span>
-                <button id="ready2" onclick="setReady(2)">Prêt</button>
-            </div>
-        </div>
-        <div id="countdown" style="display:none;">10</div>
+        <!-- Quiz content goes here -->
     </div>
-    <script src="/socket.io/socket.io.js"></script>
-    <script>
-        const socket = io();
-
-        function setReady(playerNumber) {
-            socket.emit('playerReady', playerNumber);
-            document.getElementById(`ready${playerNumber}`).disabled = true;
-        }
-
-        socket.on('playerReady', (playerId) => {
-            document.getElementById(`player${playerId}`).textContent = 'Prêt!';
-        });
-
-        socket.on('startGame', () => {
-            let countdown = 10;
-            const countdownElement = document.getElementById('countdown');
-            countdownElement.style.display = 'block';
-            const countdownInterval = setInterval(() => {
-                countdownElement.textContent = countdown;
-                countdown--;
-                if (countdown < 0) {
-                    clearInterval(countdownInterval);
-                    countdownElement.style.display = 'none';
-                    // Start the quiz
-                }
-            }, 1000);
-        });
-    </script>
 </body>
 </html>
