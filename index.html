@@ -3,29 +3,26 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Islamic QuizzUp - Inscription</title>
-  <link rel="stylesheet" href="styles.css">
+  <title>Login</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <div class="container">
-    <div class="form-container">
-      <h2>Inscription</h2>
-      <form id="register-form">
-        <label for="register-username">Nom d'utilisateur</label>
-        <input type="text" id="register-username" required>
-        <label for="register-password">Mot de passe</label>
-        <input type="password" id="register-password" required>
-        <button type="submit">S'inscrire</button>
-      </form>
-      <p>Déjà un compte ? <a href="login.html">Connectez-vous ici</a></p>
-    </div>
+    <form id="loginForm">
+      <h2>Login</h2>
+      <input type="text" id="username" placeholder="Username" required>
+      <button type="submit">Login</button>
+    </form>
   </div>
+  <script src="/socket.io/socket.io.js"></script>
   <script>
-    if (localStorage.getItem('loggedIn')) {
-      window.location.href = 'home.html';
-    }
+    document.getElementById('loginForm').addEventListener('submit', function(event) {
+      event.preventDefault();
+      const username = document.getElementById('username').value;
+      localStorage.setItem('username', username);
+      window.location.href = '/home';
+    });
   </script>
-  <script src="app.js"></script>
 </body>
 </html>
 

@@ -3,257 +3,40 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Quiz Croyance</title>
-  <link rel="stylesheet" href="style.css">
-  <style>
-    body {
-      background-color: #f0f0f0;
-      font-family: Arial, sans-serif;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
-      margin: 0;
-    }
-    
-    .container {
-      width: 80%;
-      max-width: 800px;
-      background-color: white;
-      padding: 20px;
-      border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    }
-    
-    .header {
-      text-align: center;
-      margin-bottom: 20px;
-    }
-    
-    .player-info {
-      display: flex;
-      justify-content: space-between;
-      margin-bottom: 20px;
-    }
-    
-    .player {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-    
-    .player h2 {
-      margin: 0;
-    }
-    
-    .status {
-      margin-top: 10px;
-      padding: 10px 20px;
-      border: none;
-      border-radius: 5px;
-      background-color: #4CAF50;
-      color: white;
-      cursor: pointer;
-    }
-    
-    .status.ready {
-      background-color: #f44336;
-    }
-    
-    .question-container {
-      display: none;
-      flex-direction: column;
-      align-items: center;
-    }
-    
-    .question {
-      font-size: 24px;
-      margin-bottom: 20px;
-    }
-    
-    .options {
-      display: flex;
-      flex-direction: column;
-      width: 100%;
-    }
-    
-    .options button {
-      margin: 5px 0;
-      padding: 10px;
-      font-size: 18px;
-      cursor: pointer;
-    }
-    
-    .countdown {
-      font-size: 48px;
-      margin-bottom: 20px;
-    }
-  </style>
+  <title>Croyance Quiz</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <div class="container">
-    <div class="header">
-      <h1>Quiz de Croyance</h1>
-    </div>
-    <div class="player-info">
-      <div class="player" id="player1">
-        <h2 id="player1-name">Joueur 1</h2>
-        <img id="player1-star" src="images/bronze-star.png" alt="Star" width="50">
-        <button class="status" id="player1-status">Prêt!</button>
-      </div>
-      <div class="player" id="player2">
-        <h2 id="player2-name">Joueur 2</h2>
-        <img id="player2-star" src="images/bronze-star.png" alt="Star" width="50">
-        <button class="status" id="player2-status">Prêt!</button>
-      </div>
-    </div>
-    <div class="countdown" id="countdown">10</div>
-    <div class="question-container" id="question-container">
-      <div class="question" id="question">Question ici</div>
-      <div class="options" id="options">
-        <button class="option" id="option1">Option 1</button>
-        <button class="option" id="option2">Option 2</button>
-        <button class="option" id="option3">Option 3</button>
-        <button class="option" id="option4">Option 4</button>
-      </div>
-    </div>
+    <h1>Croyance Quiz</h1>
+    <div id="players"></div>
+    <button id="readyButton">Prêt</button>
   </div>
+  <script src="/socket.io/socket.io.js"></script>
   <script>
-    const questions = [
-      { question: "Question 1", options: ["Option 1", "Option 2", "Option 3", "Option 4"], correct: 0, type: "multiple" },
-      { question: "Question 2", options: ["Vrai", "Faux"], correct: 1, type: "boolean" },
-      // ...
-    ];
+    const socket = io();
 
-    let player1Ready = false;
-    let player2Ready = false;
-    let player1Score = 0;
-    let player2Score = 0;
-    let player1Time = 0;
-    let player2Time = 0;
-    let currentQuestionIndex = 0;
-    let startTime;
+    const playersDiv = document.getElementById('players');
+    const readyButton = document.getElementById('readyButton');
 
-    document.getElementById('player1-status').addEventListener('click', function() {
-      player1Ready = !player1Ready;
-      this.classList.toggle('ready');
-      this.textContent = player1Ready ? 'Prêt!' : 'Non prêt';
-      checkBothReady();
+    readyButton.addEventListener('click', () => {
+      socket.emit('playerReady');
     });
 
-    // This function will simulate another player getting ready
-    function simulatePlayer2Ready() {
-      player2Ready = !player2Ready;
-      document.getElementById('player2-status').classList.toggle('ready');
-      document.getElementById('player2-status').textContent = player2Ready ? 'Prêt!' : 'Non prêt';
-      checkBothReady();
-    }
+    socket.on('updatePlayers', (players) => {
+      playersDiv.innerHTML = '';
+      players.forEach(player => {
+        const playerDiv = document.createElement('div');
+        playerDiv.classList.add('player');
+        playerDiv.textContent = `${player.id} - ${player.ready ? 'Prêt' : 'Pas prêt'}`;
+        playersDiv.appendChild(playerDiv);
+      });
+    });
 
-    // Call simulatePlayer2Ready after some time to simulate another player
-    setTimeout(simulatePlayer2Ready, 2000); // Simulate player 2 getting ready after 2 seconds
-
-    function checkBothReady() {
-      if (player1Ready && player2Ready) {
-        startCountdown();
-      }
-    }
-
-    function startCountdown() {
-      let countdownElement = document.getElementById('countdown');
-      let count = 10;
-      countdownElement.style.display = 'block';
-      let countdownInterval = setInterval(function() {
-        countdownElement.textContent = count;
-        count--;
-        if (count < 0) {
-          clearInterval(countdownInterval);
-          countdownElement.style.display = 'none';
-          startQuiz();
-        }
-      }, 1000);
-    }
-
-    function startQuiz() {
-      let questionContainer = document.getElementById('question-container');
-      questionContainer.style.display = 'flex';
-      loadQuestion();
-    }
-
-    function loadQuestion() {
-      if (currentQuestionIndex < questions.length) {
-        const questionData = questions[currentQuestionIndex];
-        document.getElementById('question').textContent = questionData.question;
-
-        const optionsContainer = document.getElementById('options');
-        optionsContainer.innerHTML = '';
-        questionData.options.forEach((option, index) => {
-          const button = document.createElement('button');
-          button.className = 'option';
-          button.textContent = option;
-          button.addEventListener('click', () => selectAnswer(index));
-          optionsContainer.appendChild(button);
-        });
-
-        startTime = new Date().getTime();
-        startTimer(questionData.type === 'multiple' ? (currentQuestionIndex < 10 ? 20 : currentQuestionIndex < 20 ? 15 : 10) : 10);
-      } else {
-        endQuiz();
-      }
-    }
-
-    function startTimer(seconds) {
-      let countdownElement = document.getElementById('countdown');
-      countdownElement.textContent = seconds;
-      countdownElement.style.display = 'block';
-      let countdownInterval = setInterval(function() {
-        seconds--;
-        countdownElement.textContent = seconds;
-        if (seconds <= 0) {
-          clearInterval(countdownInterval);
-          countdownElement.style.display = 'none';
-          checkAnswer(-1); // If no answer is selected
-        }
-      }, 1000);
-    }
-
-    function selectAnswer(selectedIndex) {
-      const endTime = new Date().getTime();
-      const timeTaken = (endTime - startTime) / 1000;
-      const questionData = questions[currentQuestionIndex];
-      if (selectedIndex === questionData.correct) {
-        if (currentQuestionIndex % 2 === 0) {
-          player1Score += 1;
-          player1Time += timeTaken;
-        } else {
-          player2Score += 1;
-          player2Time += timeTaken;
-        }
-      }
-      currentQuestionIndex++;
-      loadQuestion();
-    }
-
-    function endQuiz() {
-      let result;
-      if (player1Score > player2Score) {
-        result = 'Joueur 1 gagne!';
-        player1Score += 100;
-      } else if (player2Score > player1Score) {
-        result = 'Joueur 2 gagne!';
-        player2Score += 100;
-      } else {
-        if (player1Time < player2Time) {
-          result = 'Joueur 1 gagne!';
-          player1Score += 100;
-        } else {
-          result = 'Joueur 2 gagne!';
-          player2Score += 100;
-        }
-      }
-      alert(result);
-      // Redirect or reset quiz
-    }
+    socket.on('startGame', () => {
+      alert('Le jeu commence!');
+      // Ajouter la logique pour démarrer le quiz ici
+    });
   </script>
 </body>
 </html>
