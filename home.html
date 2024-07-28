@@ -3,46 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
+    <title>Islamic QuizzUp - Home</title>
     <link rel="stylesheet" href="home.css">
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1>Bienvenue sur Islamic QuizUp!</h1>
-        </header>
-        <div class="content">
-            <div class="sidebar">
-                <div id="userInfo">
-                    <p id="username">Username</p>
-                    <p id="points">Points: 0</p>
-                    <p id="level">Level: 1 <img id="levelIcon" src="images.jpeg" alt="Level Icon"></p>
-                    <p id="lastLogin">Dernière connexion: N/A</p>
-                    <p id="lastQuiz">Dernier quiz: N/A</p>
-                </div>
-                <button class="logout" onclick="logout()">Déconnexion</button>
-            </div>
-            <div class="main">
-                <a href="croyance.html"><button onclick="location.href='/croyance'">Croyance</button></a>
-                <button onclick="location.href='/jurisprudence'">Jurisprudence</button>
-                <button onclick="location.href='/tafsir'">Tafsir</button>
-                <button onclick="location.href='/hadiths'">Hadiths</button>
-                <button onclick="location.href='/histoire-des-prophetes'">Histoire des Prophètes</button>
-            </div>
+    <header>
+        <h1>Bienvenue sur Islamic QuizzUp!</h1>
+    </header>
+    <main>
+        <div id="user-info">
+            <p>Nom d'utilisateur : <span id="username"></span></p>
+            <p>Niveau : <span id="level"></span></p>
+            <p>Points : <span id="points"></span></p>
+            <p>Dernière connexion : <span id="last-connection"></span></p>
+            <p>Dernier quiz : <span id="last-quiz"></span></p>
         </div>
-    </div>
-
+        <div id="quiz-buttons">
+            <button onclick="joinQuiz('croyance')">Croyance</button>
+            <!-- Ajoutez d'autres boutons ici -->
+        </div>
+    </main>
+    <script src="/socket.io/socket.io.js"></script>
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const username = localStorage.getItem('username');
-            document.getElementById('username').textContent = username ? `Bienvenue, ${username}` : 'Bienvenue, invité';
-            // Fetch points, level, last login and last quiz from server or localStorage
+        const socket = io();
+
+        function joinQuiz(quizId) {
+            const user = {
+                username: document.getElementById('username').textContent,
+                level: document.getElementById('level').textContent,
+            };
+            socket.emit('joinQuiz', { user, quizId });
+        }
+
+        socket.on('userJoined', (data) => {
+            console.log(`${data.user.username} a rejoint le quiz ${data.quizId}`);
         });
 
-        function logout() {
-            localStorage.removeItem('username');
-            window.location.href = '/';
-        }
+        socket.on('userReady', (data) => {
+            console.log(`${data.user.username} est prêt`);
+        });
+
+        socket.on('quizStarted', (data) => {
+            console.log(`Le quiz ${data.quizId} a commencé`);
+        });
     </script>
 </body>
 </html>
