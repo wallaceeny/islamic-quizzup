@@ -3,49 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Islamic QuizzUp - Home</title>
+    <title>Home - Islamic QuizzUp</title>
     <link rel="stylesheet" href="home.css">
 </head>
 <body>
-    <header>
-        <h1>Bienvenue sur Islamic QuizzUp!</h1>
-    </header>
-    <main>
-        <div id="user-info">
-            <p>Nom d'utilisateur : <span id="username"></span></p>
-            <p>Niveau : <span id="level"></span></p>
-            <p>Points : <span id="points"></span></p>
-            <p>Dernière connexion : <span id="last-connection"></span></p>
-            <p>Dernier quiz : <span id="last-quiz"></span></p>
+    <div class="container">
+        <div class="sidebar">
+            <div class="user-info">
+                <p id="username">Pseudo: Joueur</p>
+                <p id="points">Points: 0</p>
+                <p id="level">Niveau: 1</p>
+                <img id="level-icon" src="images/bronze-star.png" alt="Level Icon">
+            </div>
+            <div class="user-stats">
+                <p id="last-login">Dernière connexion: Jamais</p>
+                <p id="last-quiz">Dernier quiz: Jamais</p>
+            </div>
         </div>
-        <div id="quiz-buttons">
-            <button onclick="joinQuiz('croyance')">Croyance</button>
-            <!-- Ajoutez d'autres boutons ici -->
+        <div class="main-content">
+            <h1>Bienvenue sur Islamic QuizzUp!</h1>
+            <div class="buttons">
+                <button onclick="location.href='croyance.html'">Croyance</button>
+                <button onclick="location.href='jurisprudence.html'">Jurisprudence</button>
+                <button onclick="location.href='tafsir.html'">Tafsir</button>
+                <button onclick="location.href='hadiths.html'">Hadiths</button>
+                <button onclick="location.href='prophets.html'">Histoire des Prophètes</button>
+            </div>
         </div>
-    </main>
-    <script src="/socket.io/socket.io.js"></script>
-    <script>
-        const socket = io();
-
-        function joinQuiz(quizId) {
-            const user = {
-                username: document.getElementById('username').textContent,
-                level: document.getElementById('level').textContent,
-            };
-            socket.emit('joinQuiz', { user, quizId });
-        }
-
-        socket.on('userJoined', (data) => {
-            console.log(`${data.user.username} a rejoint le quiz ${data.quizId}`);
-        });
-
-        socket.on('userReady', (data) => {
-            console.log(`${data.user.username} est prêt`);
-        });
-
-        socket.on('quizStarted', (data) => {
-            console.log(`Le quiz ${data.quizId} a commencé`);
-        });
-    </script>
+    </div>
+    <script src="app.js"></script>
 </body>
 </html>
+
