@@ -1,42 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Croyance Quiz</title>
-  <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Croyance Quiz</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <div class="container">
-    <h1>Croyance Quiz</h1>
-    <div id="players"></div>
-    <button id="readyButton">Prêt</button>
-  </div>
-  <script src="/socket.io/socket.io.js"></script>
-  <script>
-    const socket = io();
+    <div class="container">
+        <h1>Croyance Quiz</h1>
+        <div id="players">
+            <div class="player">
+                <span id="player1">En attente...</span>
+                <button id="ready1" onclick="setReady(1)">Prêt</button>
+            </div>
+            <div class="player">
+                <span id="player2">En attente...</span>
+                <button id="ready2" onclick="setReady(2)">Prêt</button>
+            </div>
+        </div>
+        <div id="countdown" style="display:none;">10</div>
+    </div>
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        const socket = io();
 
-    const playersDiv = document.getElementById('players');
-    const readyButton = document.getElementById('readyButton');
+        function setReady(playerNumber) {
+            socket.emit('playerReady', playerNumber);
+            document.getElementById(`ready${playerNumber}`).disabled = true;
+        }
 
-    readyButton.addEventListener('click', () => {
-      socket.emit('playerReady');
-    });
+        socket.on('playerReady', (playerId) => {
+            document.getElementById(`player${playerId}`).textContent = 'Prêt!';
+        });
 
-    socket.on('updatePlayers', (players) => {
-      playersDiv.innerHTML = '';
-      players.forEach(player => {
-        const playerDiv = document.createElement('div');
-        playerDiv.classList.add('player');
-        playerDiv.textContent = `${player.id} - ${player.ready ? 'Prêt' : 'Pas prêt'}`;
-        playersDiv.appendChild(playerDiv);
-      });
-    });
-
-    socket.on('startGame', () => {
-      alert('Le jeu commence!');
-      // Ajouter la logique pour démarrer le quiz ici
-    });
-  </script>
+        socket.on('startGame', () => {
+            let countdown = 10;
+            const countdownElement = document.getElementById('countdown');
+            countdownElement.style.display = 'block';
+            const countdownInterval = setInterval(() => {
+                countdownElement.textContent = countdown;
+                countdown--;
+                if (countdown < 0) {
+                    clearInterval(countdownInterval);
+                    countdownElement.style.display = 'none';
+                    // Start the quiz
+                }
+            }, 1000);
+        });
+    </script>
 </body>
 </html>
