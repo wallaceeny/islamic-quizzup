@@ -36,3 +36,13 @@ const user = {
     window.location.href = 'index.html';
   });
   
+  document.addEventListener('DOMContentLoaded', () => {
+    const username = localStorage.getItem('username');
+    document.getElementById('username').innerText = `Pseudo: ${username}`;
+
+    // Initialisez les autres éléments comme les points, le niveau, etc.
+    document.getElementById('points').innerText = 'Points: 0';
+    document.getElementById('level').innerText = 'Niveau: 1';
+    document.getElementById('last-login').innerText = 'Dernière connexion: Jamais';
+    document.getElementById('last-quiz').innerText = 'Dernier quiz: Jamais';
+});
