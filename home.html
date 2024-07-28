@@ -11,6 +11,11 @@
       margin: 0;
       padding: 0;
       font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
     }
 
     header {
@@ -27,8 +32,8 @@
     .container {
       display: flex;
       flex-direction: row;
+      width: 100%;
       margin-top: 60px;
-      padding: 20px;
     }
 
     .user-info {
@@ -176,17 +181,17 @@
 
       const star = document.getElementById('star');
       if (level <= 10) {
-        star.src = 'images/bronze-star.png'; // Chemin vers l'image de l'étoile de bronze
+        star.src = '/path/to/bronze-star.png'; // Replace with the actual path
       } else if (level <= 30) {
-        star.src = 'images/silver-star.png'; // Chemin vers l'image de l'étoile d'argent
+        star.src = '/path/to/silver-star.png'; // Replace with the actual path
       } else if (level <= 60) {
-        star.src = 'images/gold-star.png'; // Chemin vers l'image de l'étoile d'or
+        star.src = '/path/to/gold-star.png'; // Replace with the actual path
       } else if (level <= 88) {
-        star.src = 'images/cobalt-star.png'; // Chemin vers l'image de l'étoile de cobalt
+        star.src = '/path/to/cobalt-star.png'; // Replace with the actual path
       } else if (level <= 117) {
-        star.src = 'images/diamond-star.png'; // Chemin vers l'image de l'étoile de diamant
+        star.src = '/path/to/diamond-star.png'; // Replace with the actual path
       } else if (level <= 139) {
-        star.src = 'images/pearl-star.png'; // Chemin vers l'image de l'étoile de perle rose
+        star.src = '/path/to/pearl-star.png'; // Replace with the actual path
       }
 
       document.getElementById('logout-btn').addEventListener('click', function() {
