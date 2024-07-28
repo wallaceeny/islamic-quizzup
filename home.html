@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Islamic QuizzUp - Accueil</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="styles.css">
   <style>
     body {
       background-color: #f0f0f0;
@@ -14,8 +14,6 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
-      height: 100vh;
     }
 
     header {
@@ -23,25 +21,20 @@
       color: white;
       text-align: center;
       padding: 10px 0;
-      position: fixed;
       width: 100%;
-      top: 0;
-      z-index: 1000;
     }
 
     .container {
       display: flex;
       flex-direction: row;
       width: 100%;
-      margin-top: 60px;
+      padding: 20px;
     }
 
     .user-info {
-      flex: 1;
-      max-width: 300px;
-      margin-right: 20px;
-      padding: 20px;
+      width: 300px;
       background-color: white;
+      padding: 20px;
       border-radius: 10px;
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     }
@@ -68,11 +61,12 @@
     }
 
     .main-content {
-      flex: 3;
+      flex: 1;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
+      padding: 20px;
     }
 
     .categories {
@@ -181,17 +175,17 @@
 
       const star = document.getElementById('star');
       if (level <= 10) {
-        star.src = '/path/to/bronze-star.png'; // Replace with the actual path
+        star.src = 'images/bronze-star.png'; // Replace with the actual path
       } else if (level <= 30) {
-        star.src = '/path/to/silver-star.png'; // Replace with the actual path
+        star.src = 'images/silver-star.png'; // Replace with the actual path
       } else if (level <= 60) {
-        star.src = '/path/to/gold-star.png'; // Replace with the actual path
+        star.src = 'images/gold-star.png'; // Replace with the actual path
       } else if (level <= 88) {
-        star.src = '/path/to/cobalt-star.png'; // Replace with the actual path
+        star.src = 'images/cobalt-star.png'; // Replace with the actual path
       } else if (level <= 117) {
-        star.src = '/path/to/diamond-star.png'; // Replace with the actual path
+        star.src = 'images/diamond-star.png'; // Replace with the actual path
       } else if (level <= 139) {
-        star.src = '/path/to/pearl-star.png'; // Replace with the actual path
+        star.src = 'images/pearl-star.png'; // Replace with the actual path
       }
 
       document.getElementById('logout-btn').addEventListener('click', function() {
