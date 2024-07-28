@@ -188,4 +188,38 @@ body {
   a:hover {
     text-decoration: underline;
   }
-  
+  /* Ajoutez ces styles au fichier styles.css existant */
+
+.quiz-container {
+  text-align: center;
+  padding: 20px;
+}
+
+#question {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+#answers button {
+  display: block;
+  margin: 10px auto;
+  padding: 10px;
+  width: 300px;
+  font-size: 16px;
+}
+
+#ready-button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  font-size: 18px;
+}
+
+#player-status {
+  margin-top: 20px;
+}
+
+#countdown {
+  margin-top: 20px;
+  font-size: 24px;
+  color: red;
+}

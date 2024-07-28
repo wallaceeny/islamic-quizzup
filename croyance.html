@@ -9,7 +9,18 @@
 <body>
     <div class="quiz-container">
         <h1>Croyance Quiz</h1>
-        <!-- Quiz content goes here -->
+        <div id="quiz">
+            <p id="question"></p>
+            <div id="answers"></div>
+            <button id="ready-button">Prêt!</button>
+        </div>
+        <div id="player-status">
+            <p id="player1">Joueur 1: En attente</p>
+            <p id="player2">Joueur 2: En attente</p>
+        </div>
+        <div id="countdown"></div>
     </div>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="quiz.js"></script>
 </body>
 </html>
