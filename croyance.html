@@ -9,16 +9,13 @@
     <header>
         <h1>Quiz Croyance</h1>
     </header>
-    <div id="playerReadyContainer">
-        <div id="players"></div>
-        <button id="readyButton">Je suis prêt</button>
+    <div id="quizContainer">
+        <div id="message"></div>
+        <button id="startButton">Lancer</button>
+        <div id="question" class="hidden"></div>
+        <div id="answers" class="hidden"></div>
+        <div id="countdown" class="hidden"></div>
     </div>
-    <div id="quizContainer" style="display:none;">
-        <div id="question"></div>
-        <div id="answers"></div>
-        <div id="countdown"></div>
-    </div>
-    <script src="/socket.io/socket.io.js"></script>
     <script src="/scripts/quiz.js"></script>
 </body>
 </html>
