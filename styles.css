@@ -1,225 +1,76 @@
 body {
-    font-family: 'Arial', sans-serif;
-    background-color: #f0f0f0;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  header {
-    width: 100%;
-    background-color: #007bff;
-    color: #fff;
-    padding: 15px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  
-  header h1 {
-    margin: 0;
-  }
-  
-  header button {
-    padding: 10px;
-    background-color: #0056b3;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-
-  
-  .sidebar {
-    width: 25%;
-    padding: 20px;
-    background-color: #fff;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    border-radius: 10px;
-  }
-  
-  .player-info {
-    margin-bottom: 20px;
-  }
-  
-  .player-info h2 {
-    margin: 0;
-  }
-  
-  .points-level {
-    display: flex;
-    align-items: center;
-  }
-  
-  .points {
-    margin-right: 10px;
-    font-weight: bold;
-  }
-  
-  .level-star {
-    display: inline-block;
-    padding: 5px 10px;
-    border-radius: 50%;
-    color: #fff;
-  }
-  
-  .bronze { background-color: #cd7f32; }
-  .silver { background-color: #c0c0c0; }
-  .gold { background-color: #ffd700; }
-  .cobalt { background-color: #0047ab; }
-  .diamond { background-color: #b9f2ff; }
-  .pearl { background-color: #e7accf; }
-  
-  .last-activity p {
-    margin: 5px 0;
-  }
-  
-  .quiz-buttons {
-    width: 75%;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    align-items: center;
-  }
-  
-  .quiz-btn {
-    width: 45%;
-    padding: 20px;
-    margin: 10px;
-    font-size: 18px;
-    color: #fff;
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-  }
-  
-  .quiz-btn:nth-child(1) { background-color: #007bff; }
-  .quiz-btn:nth-child(2) { background-color: #28a745; }
-  .quiz-btn:nth-child(3) { background-color: #ffc107; }
-  .quiz-btn:nth-child(4) { background-color: #dc3545; }
-  .quiz-btn:nth-child(5) { background-color: #17a2b8; }
-  
-  .quiz-btn:hover {
-    opacity: 0.8;
-  }
-  
-  /* Reset some basic styles */
-/* Reset some basic styles */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  
-  body {
-    font-family: 'Arial', sans-serif;
-    background-color: #f0f0f0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-  }
-  
-  .container {
-    width: 100%;
-    max-width: 400px;
-    padding: 20px;
-  }
-  
-  .form-container {
-    background-color: #fff;
-    padding: 40px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  }
-  
-  h2 {
-    text-align: center;
-    margin-bottom: 20px;
-    color: #333;
-  }
-  
-  form {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  label {
-    margin-bottom: 5px;
-    color: #555;
-  }
-  
-  input[type="text"],
-  input[type="password"] {
-    padding: 10px;
-    margin-bottom: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 16px;
-  }
-  
-  button {
-    padding: 10px;
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-  }
-  
-  button:hover {
-    background-color: #0056b3;
-  }
-  
-  p {
-    text-align: center;
-    color: #555;
-  }
-  
-  a {
-    color: #007bff;
-    text-decoration: none;
-  }
-  
-  a:hover {
-    text-decoration: underline;
-  }
-  /* Ajoutez ces styles au fichier styles.css existant */
-
-.quiz-container {
+  font-family: Arial, sans-serif;
+  background-color: #f0f0f0;
   text-align: center;
-  padding: 20px;
 }
 
-#question {
-  font-size: 24px;
-  margin-bottom: 20px;
+header {
+  background-color: #007BFF;
+  color: white;
+  padding: 10px 0;
 }
 
-#answers button {
-  display: block;
-  margin: 10px auto;
+#playerStats {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+#playerInfo {
+  background-color: #e0e0e0;
   padding: 10px;
-  width: 300px;
+  border-radius: 5px;
+}
+
+#categoryButtons {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.categoryButton {
+  background-color: #007BFF;
+  color: white;
+  border: none;
+  padding: 15px 30px;
   font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
 }
 
-#ready-button {
-  margin-top: 20px;
-  padding: 10px 20px;
+.categoryButton:hover {
+  background-color: #0056b3;
+}
+
+#playerReadyContainer {
+  margin: 20px;
+}
+
+#quizContainer {
+  margin: 20px;
+}
+
+.answerButton {
+  display: block;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  padding: 10px;
+  margin: 10px 0;
   font-size: 18px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
 }
 
-#player-status {
-  margin-top: 20px;
+.answerButton:hover {
+  background-color: #218838;
 }
 
 #countdown {
-  margin-top: 20px;
   font-size: 24px;
-  color: red;
+  margin-top: 20px;
 }

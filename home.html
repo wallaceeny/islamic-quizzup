@@ -2,35 +2,27 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home - Islamic QuizzUp</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Islamic QuizzUp</title>
+    <link rel="stylesheet" href="/styles/styles.css">
 </head>
 <body>
-    <div class="container">
-        <div class="sidebar">
-            <div class="user-info">
-                <p id="username">Pseudo: Joueur</p>
-                <p id="points">Points: 0</p>
-                <p id="level">Niveau: 1</p>
-                <img id="level-icon" src="images/bronze-star.png" alt="Level Icon">
-            </div>
-            <div class="user-stats">
-                <p id="last-login">Dernière connexion: Jamais</p>
-                <p id="last-quiz">Dernier quiz: Jamais</p>
-            </div>
-        </div>
-        <div class="main-content">
-            <h1>Bienvenue sur Islamic QuizzUp!</h1>
-            <div class="buttons">
-                <button onclick="location.href='croyance.html'">Croyance</button>
-                <button onclick="location.href='jurisprudence.html'">Jurisprudence</button>
-                <button onclick="location.href='tafsir.html'">Tafsir</button>
-                <button onclick="location.href='hadiths.html'">Hadiths</button>
-                <button onclick="location.href='prophets.html'">Histoire des Prophètes</button>
-            </div>
+    <header>
+        <h1>Islamic QuizzUp</h1>
+    </header>
+    <div id="playerStats">
+        <div id="playerInfo">
+            <p>Pseudo: Joueur1</p>
+            <p>Niveau: 5 <span>&#9733;</span></p>
+            <p>Points: 1200</p>
         </div>
     </div>
-    <script src="home.js"></script>
+    <div id="categoryButtons">
+        <button class="categoryButton" onclick="window.location.href='/croyance'">Croyance</button>
+        <button class="categoryButton">Jurisprudence</button>
+        <button class="categoryButton">Coran</button>
+        <button class="categoryButton">Hadiths</button>
+        <button class="categoryButton">Biographie du Prophète</button>
+        <button class="categoryButton">Histoire des Prophètes</button>
+    </div>
 </body>
 </html>
